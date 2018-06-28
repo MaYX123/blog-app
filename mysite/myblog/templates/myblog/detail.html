@@ -1,0 +1,60 @@
+{% extends 'myblog/base.html' %}
+
+{% block meta %}
+<meta name="description" content=" {{ post.title }} ">
+{% endblock %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block beforehead %}
+<script>
+$(function() {
+    var $blog = $('.blog-post-content');
+    console.log('start');
+    $($blog).find('h2, h3, h4, h5').each(function(i, ele) {
+    $(ele).attr('id', 'h-'+i);
+    tagName = $(ele).prop('tagName');
+    $('#blog-toc').append('<a href="#'+$(ele).attr('id')+'" class="title-'+tagName+'">'+$(ele).text()+'</a>');
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 blog-main">
+        <div class="card box-shadow" id="main-card-article">
+            <div class="card-body px-2 px-lg-3">
+                <article class="blog-post">
+                    <h2 class="card-title blog-post-title">{{ post.title }}</h2>
+                    <div class="blog-post-meta">
+                        <p>
+                            {{ post.category }} | 更新于 {{ post.modified_time|date:'Y年m月d日' }} {{ post.modified_time|time:'H:i' }} | {{ post.views }} 阅读
+                        </p>
+                    </div>
+                    <div class="blog-post-content">{{ post.body|safe }}</div>
+                    <div>
+                        <span class="blog-post-meta">标签：</span>
+                        {% for tag in post.tags.all %}
+                        <div class="badge">
+                            <a href="{% url 'myblog:tag' tag.pk %}">{{ tag.tag_name }}</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </article><!-- /.blog-post -->
+            </div>
+        </div>
+    </div><!-- /.blog-main -->
+
+    <aside class="col-lg-4 blog-sidebar d-none d-sm-none d-md-none d-lg-block">
+        <div class="card box-shadow" id="aside-card-toc">
+            <div class="card-body px-2 px-lg-3">
+                <h5 class="card-title aside-card-title">目 录</h5>
+                <div id="blog-toc"></div>
+            </div>
+        </div>
+    </aside><!-- /.blog-sidebar -->
+</div><!-- /.row -->
+
+{% endblock %}
+

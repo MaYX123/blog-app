@@ -1,0 +1,107 @@
+{% extends "myblog/base.html" %}
+{% load myblog_extras %}
+
+{% block title %}让我们一起晃膀子{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 blog-main">
+        {% for post in post_list %}
+        <div class="card box-shadow" id="main-card-article-list">
+            <div class="card-body px-2 px-lg-3">
+                <article class="blog-post">
+                    <h3 class="card-title blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                    <p class="blog-post-meta">
+                        {{ post.category }} | 更新于 {{ post.modified_time|date:'Y年m月d日' }} {{ post.modified_time|time:'H:i' }} | {{ post.views }} 阅读
+                    </p>
+                    <p class="blog-post-summary">{{ post.summary }}</p>
+                    <div class="badge float-right">
+                        <a href="{{ post.get_absolute_url }}">继续阅读</a>
+                    </div>
+                </article><!-- /.blog-post -->
+            </div>
+        </div>
+        {% endfor %}
+
+        {% if is_paginated %}
+            <nav aria-label="pagination">
+                <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">上一页</span>
+                            <span class="sr-only">上一页</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">上一页</span>
+                            <span class="sr-only">上一页</span>
+                        </a>
+                    </li>
+                {% endif %}
+                    <li class="page-item disabled"><a class="page-link" href="#"><span>{{ page_obj.number }} / {{ paginator.num_pages }}</span></a></li>
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                          <span aria-hidden="true">下一页</span>
+                          <span class="sr-only">下一页</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">下一页</span>
+                          <span class="sr-only">下一页</span>
+                        </a>
+                    </li>
+                {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+    </div><!-- /.blog-main -->
+    <aside class="col-lg-4 blog-sidebar">
+        <div class="card box-shadow" id="aside-card-category">
+            <div class="card-body px-2 px-lg-3">
+                <h5 class="card-title aside-card-title">分 类</h5>
+                {% get_categories as category_list %}
+                <ul class="list-group list-group-flush">
+                    {% for category in category_list %}
+                        <li class="list-group-item px-0 py-1 d-flex justify-content-between align-items-center ">
+                            <a href="{% url 'myblog:category' category.pk %}">{{ category.category_name }}</a>
+                            <span class="badge">{{ category.num_posts }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="card box-shadow" id="aside-card-tag" >
+            <div class="card-body px-2 px-lg-3">
+                <h5 class="card-title aside-card-title">标 签</h5>
+                {% get_tags as tag_list %}
+                <div>
+                    {% for tag in tag_list %}
+                        <div class="badge">
+                            <a href="{% url 'myblog:tag' tag.pk %}">{{ tag.tag_name }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="card box-shadow" id="aside-card-archive">
+            <div class="card-body px-2 px-lg-3">
+                <h5 class="card-title aside-card-title">归 档</h5>
+                {% get_archives as date_list %}
+                <ul class="list-group list-group-flush" >
+                    {% for date in date_list %}
+                        <li class="list-group-item px-0 py-1">
+                            <a href="{% url 'myblog:archive' date.year date.month %}">{{ date.year }} 年 {{ date.month }} 月</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </aside><!-- /.blog-sidebar -->
+</div><!-- /.row -->
+{% endblock %}

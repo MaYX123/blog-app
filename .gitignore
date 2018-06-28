@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Distribution / packaging
+dist/
+
+# web
+favicon.ico
+*.JPG
+*.jpg
+*.PNG
+*.png
+*.GIF
+*.gif
+
+# fabric
+fabfile.py
+fabric.json
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# Environments
+myvenv/
+
+# PyCharm
+.idea/
+
+# MacOS
+.DS_Store
+*.DS_Store

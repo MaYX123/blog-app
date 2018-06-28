@@ -1,0 +1,57 @@
+{% extends "myblog/base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}关于{% endblock %}
+
+{% block content %}
+<div id="about">
+    <div class="card-columns">
+
+            <div class="card box-shadow">
+                <img class="card-img-top" src="{% static 'myblog/img/2017winter.jpg' %}" alt="Card image">
+                <div class="card-body">
+                    <h5 class="card-title">关于博主</h5>
+                    <p class="cart-text">
+                        博主做过两年嵌入式开发，目前更关注前端领域。常用语言为 Python、JavaScript、C++、C。
+                    </p>
+                </div>
+            </div>
+
+            <div class="card box-shadow">
+                <div class="card-body">
+                    <h5 class="card-title">网站功能</h5>
+                    <p class="cart-text">
+                        本站是个人技术博客，主要发布原创博文。当前版本为响应式布局，主要功能包括撰写博文、admin后台管理，支持 markdown 语法编辑文章和编程语言语法高亮。
+                    </p>
+
+                </div>
+            </div>
+            <div class="card box-shadow">
+                <div class="card-body">
+                    <h5 class="card-title">网站源码</h5>
+                    <p class="cart-text">
+                        当前版本由 Bootstrap、Django、MySQL 支持搭建，部署在阿里云 ECS。源码可查看博主的
+                        <a href="https://github.com/MaYX123" target="_blank">GitHub</a>，欢迎你 star、fork、提出bug。
+                    </p>
+                </div>
+            </div>
+            <div class="card box-shadow">
+                <img class="card-img-top" src="{% static 'myblog/img/2017summer.JPG' %}" alt="Card image">
+                <div class="card-body">
+                    <h5 class="card-title">访问更多</h5>
+                    <p class="cart-text">除了本站，你还可以通过
+                        <a href="https://github.com/MaYX123" target="_blank">GitHub</a>、
+                        <a href="https://segmentfault.com/u/mayx123" target="_blank">SegmentFault</a>
+                        访问博主。</p>
+                </div>
+            </div>
+            <div class="card box-shadow">
+                <div class="card-body">
+                    <h5 class="card-title">关于未来</h5>
+                    <p class="cart-text">网站会努力维护下去的。愿世界和平！</p>
+                </div>
+            </div>
+</div>
+
+{% endblock %}
