@@ -12,6 +12,7 @@ favicon.ico
 *.png
 *.GIF
 *.gif
+blogcommon.css*
 
 # fabric
 fabfile.py
@@ -43,3 +44,4 @@ myvenv/
 # MacOS
 .DS_Store
 *.DS_Store
+local-long-term-plan.md

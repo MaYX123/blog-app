@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-8 blog-main">
         {% for post in post_list %}
-        <div class="card box-shadow" id="main-card-article-list">
+        <div class="card" id="main-card-article-list">
             <div class="card-body px-2 px-lg-3">
                 <article class="blog-post">
                     <h3 class="card-title blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
@@ -62,7 +62,7 @@
         {% endif %}
     </div><!-- /.blog-main -->
     <aside class="col-lg-4 blog-sidebar">
-        <div class="card box-shadow" id="aside-card-category">
+        <div class="card" id="aside-card-category">
             <div class="card-body px-2 px-lg-3">
                 <h5 class="card-title aside-card-title">分 类</h5>
                 {% get_categories as category_list %}
@@ -76,7 +76,7 @@
                 </ul>
             </div>
         </div>
-        <div class="card box-shadow" id="aside-card-tag" >
+        <div class="card" id="aside-card-tag" >
             <div class="card-body px-2 px-lg-3">
                 <h5 class="card-title aside-card-title">标 签</h5>
                 {% get_tags as tag_list %}
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="card box-shadow" id="aside-card-archive">
+        <div class="card" id="aside-card-archive">
             <div class="card-body px-2 px-lg-3">
                 <h5 class="card-title aside-card-title">归 档</h5>
                 {% get_archives as date_list %}
