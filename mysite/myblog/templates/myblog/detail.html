@@ -33,14 +33,12 @@ $(function() {
                         </p>
                     </div>
                     <div class="blog-post-content">{{ post.body|safe }}</div>
-                    <div>
+                    <nav>
                         <span class="blog-post-meta">标签：</span>
                         {% for tag in post.tags.all %}
-                        <div class="badge">
-                            <a href="{% url 'myblog:tag' tag.pk %}">{{ tag.tag_name }}</a>
-                        </div>
+                            <a class="badge" href="{% url 'myblog:tag' tag.pk %}">{{ tag.tag_name }}</a>
                         {% endfor %}
-                    </div>
+                    </nav>
                 </article><!-- /.blog-post -->
             </div>
         </div>
@@ -48,10 +46,10 @@ $(function() {
 
     <aside class="col-lg-4 blog-sidebar d-none d-sm-none d-md-none d-lg-block">
         <div class="card" id="aside-card-toc">
-            <div class="card-body px-2 px-lg-3">
+            <nav class="card-body px-2 px-lg-3">
                 <h5 class="card-title aside-card-title">目 录</h5>
                 <div id="blog-toc"></div>
-            </div>
+            </nav>
         </div>
     </aside><!-- /.blog-sidebar -->
 </div><!-- /.row -->

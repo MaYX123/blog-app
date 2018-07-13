@@ -15,9 +15,9 @@
                         {{ post.category }} | 更新于 {{ post.modified_time|date:'Y年m月d日' }} {{ post.modified_time|time:'H:i' }} | {{ post.views }} 阅读
                     </p>
                     <p class="blog-post-summary">{{ post.summary }}</p>
-                    <div class="badge float-right">
-                        <a href="{{ post.get_absolute_url }}">继续阅读</a>
-                    </div>
+                    <nav class="float-right">
+                        <a class="badge" href="{{ post.get_absolute_url }}">继续阅读</a>
+                    </nav>
                 </article><!-- /.blog-post -->
             </div>
         </div>
@@ -63,7 +63,7 @@
     </div><!-- /.blog-main -->
     <aside class="col-lg-4 blog-sidebar">
         <div class="card" id="aside-card-category">
-            <div class="card-body px-2 px-lg-3">
+            <nav class="card-body px-2 px-lg-3">
                 <h5 class="card-title aside-card-title">分 类</h5>
                 {% get_categories as category_list %}
                 <ul class="list-group list-group-flush">
@@ -74,23 +74,21 @@
                         </li>
                     {% endfor %}
                 </ul>
-            </div>
+            </nav>
         </div>
         <div class="card" id="aside-card-tag" >
-            <div class="card-body px-2 px-lg-3">
+            <nav class="card-body px-2 px-lg-3">
                 <h5 class="card-title aside-card-title">标 签</h5>
                 {% get_tags as tag_list %}
                 <div>
                     {% for tag in tag_list %}
-                        <div class="badge">
-                            <a href="{% url 'myblog:tag' tag.pk %}">{{ tag.tag_name }}</a>
-                        </div>
+                            <a class="badge" href="{% url 'myblog:tag' tag.pk %}">{{ tag.tag_name }}</a>
                     {% endfor %}
                 </div>
-            </div>
+            </nav>
         </div>
         <div class="card" id="aside-card-archive">
-            <div class="card-body px-2 px-lg-3">
+            <nav class="card-body px-2 px-lg-3">
                 <h5 class="card-title aside-card-title">归 档</h5>
                 {% get_archives as date_list %}
                 <ul class="list-group list-group-flush" >
@@ -100,7 +98,7 @@
                         </li>
                     {% endfor %}
                 </ul>
-            </div>
+            </nav>
         </div>
     </aside><!-- /.blog-sidebar -->
 </div><!-- /.row -->
