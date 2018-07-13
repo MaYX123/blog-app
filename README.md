@@ -2,6 +2,8 @@
 [loaf.fun](http://loaf.fun)
 
 ## Changelog
+### version 3.2.0
+Customizing 404.html
 ### version 3.1.0
 Refactoring CSS with Sass.
 ### version 3.0.0
