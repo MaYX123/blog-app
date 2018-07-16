@@ -1,6 +1,11 @@
 ## A responsive blog website
 [loaf.fun](http://loaf.fun)
-
+## Preparing features
+### Use React.
+### Support sign up and sign in.
+### Support user comments.
+### RESTful API.
+### ...
 ## Changelog
 ### version 3.2.0
 Customizing 404.html
